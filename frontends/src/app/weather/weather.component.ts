@@ -65,7 +65,8 @@ export class WeatherComponent implements OnInit {
     .subscribe(
         data => {
           this.weatherResponse = data.weatherData;
-          this.city = this.weatherResponse.city;
+          const cityIndex = this.weatherResponse.city.indexOf(',');
+          this.city = this.weatherResponse.city.substr(0,cityIndex);
           this.temperature = this.weatherResponse.temperature;
           this.temperatureType = this.weatherResponse.temperature_type;
           this.loading = false;
